@@ -527,8 +527,8 @@ mark,
 }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto;
+  max-width: 500px;
+  height: 300px;
 }
 
 .img-thumbnail {
