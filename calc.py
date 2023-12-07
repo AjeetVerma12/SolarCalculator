@@ -113,14 +113,14 @@ def calc_from_capacity(state, capacity, category, rate):
     
     net_cost = round(cost - subsidy, 2)
     ans.append(net_cost)
-    annual_elec = cap * prod * 300
+    annual_elec = int(cap * prod * 300)
     ans.append(annual_elec)
-    total_elec = annual_elec * 25
+    total_elec = int(annual_elec * 25)
     ans.append(total_elec)
 
-    month_save = round((annual_elec / 12) * rate)
-    annual_save = round(annual_elec * rate)
-    overall_save = round(annual_save * 25)
+    month_save = round((annual_elec / 12) * rate,2)
+    annual_save = round(annual_elec * rate,2)
+    overall_save = round(annual_save * 25,2)
     ans.append(month_save)
     ans.append(annual_save)
     ans.append(overall_save)
