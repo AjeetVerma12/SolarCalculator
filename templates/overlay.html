@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Rooftop Calculator Overlay</title>
+<style>
+  /* Overlay base styles */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; /* Changed to flex to be visible by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  /* Overlay content box styles */
+  .overlay-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Close button styles */
+  .close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Style for headings and paragraphs */
+  h2, p {
+    margin: 0 0 10px;
+  }
+
+  /* Styling for list items */
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .info-list li {
+    background: #f2f2f2;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .info-list ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+
+  .info-list ul li {
+    background: none;
+    font-weight: normal;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .overlay-content {
+      width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- The Overlay -->
+<div id="overlay" class="overlay">
+  <!-- Overlay Content -->
+  <div class="overlay-content">
+    <span class="close-button" id="closeOverlayBtn">&times;</span>
+    <h2>Solar Rooftop Calculator</h2>
+    <p>Average Global Horizontal Irradiation (GHI) in {{state}} state is 1964 W/sq.m</p>
+    <p>1kWp solar rooftop plant will generate on an average over the year 4.42 kWh of electricity per day (considering 5.5 sunshine hours)</p>
+    <ul class="info-list">
+      <li>1. Size of Power Plant: Feasible Plant size as per your Roof Top Area : 205.3 kW</li>
+      <li>2. Cost of the Plant:
+        <ul>
+          <li>MNRE current Benchmark Cost: Rs. 53000 Rs./kW</li>
+          <li>Without subsidy (Based on current MNRE benchmark): Rs. 10880900</li>
+          <li>With subsidy 30% (Based on current MNRE benchmark): Rs. 7616630</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+// JavaScript to close the overlay
+document.getElementById('closeOverlayBtn').onclick = function() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
+// Close the overlay when clicking outside of the box
+window.onclick = function(event) {
+  var overlay = document.getElementById('overlay');
+  if (event.target == overlay) {
+    overlay.style.display = 'none';
+  }
+}
+</script>
+
+</body>
+</html>
