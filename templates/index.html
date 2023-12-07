@@ -543,51 +543,51 @@
                                     </div>
                                 </div>
                                 <br>
-                                <input type="file" id="roofTopAreaFile" accept="image/*" value="roof" class="hidden-input">
-                                <input type="text" id="solarPanelCapacity" placeholder="Enter capacity" value="panel" class="hidden-input">
-                                <input type="number" id="budgetInput" placeholder="Enter your budget" value="budget" class="hidden-input">
+                                <input type="file" id="roofTopAreaFile" name="rooffile" accept="image/*" value="roof" class="hidden-input">
+                                <input type="number" id="solarPanelCapacity" name="solarpanel" placeholder="Enter capacity"  class="hidden-input">
+                                <input type="number" id="budgetInput" name="budget" placeholder="Enter your budget" class="hidden-input">
                             </div>
                             
                               <div>
                                   <label for="state" class="formbold-form-label"> Select State </label>
-                                  <select name="state" id="state">
+                                  <select name="state" id="state" name="state">
                                     <option value="0">Select State</option>
-                                    <option value="35">ANDAMAN and NICOBAR ISLANDS</option>
-                                    <option value="28">ANDHRA PRADESH</option>
-                                    <option value="12">ARUNACHAL PRADESH</option>
-                                    <option value="18">ASSAM</option>
-                                    <option value="10">BIHAR</option>
-                                    <option value="4">CHANDIGARH</option>
-                                    <option value="22">CHHATTISGARH</option>
-                                    <option value="30">GOA</option>
-                                    <option value="24">GUJARAT</option>
-                                    <option value="6">HARYANA</option>
-                                    <option value="2">HIMACHAL PRADESH</option>
-                                    <option value="1">JAMMU and KASHMIR</option>
-                                    <option value="20">JHARKHAND</option>
-                                    <option value="29">KARNATAKA</option>
-                                    <option value="32">KERALA</option>
-                                    <option value="37">LADAKH</option>
-                                    <option value="31">LAKSHADWEEP</option>
-                                    <option value="23">MADHYA PRADESH</option>
-                                    <option value="27">MAHARASHTRA</option>
-                                    <option value="14">MANIPUR</option>
-                                    <option value="17">MEGHALAYA</option>
-                                    <option value="15">MIZORAM</option>
-                                    <option value="13">NAGALAND</option>
-                                    <option value="7">NCT OF DELHI</option>
-                                    <option value="21">ORISSA</option>
-                                    <option value="34">PUDUCHERRY</option>
-                                    <option value="3">PUNJAB</option>
-                                    <option value="8">RAJASTHAN</option>
-                                    <option value="11">SIKKIM</option>
-                                    <option value="33">TAMIL NADU</option>
-                                    <option value="36">TELANGANA</option>
-                                    <option value="38">THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU</option>
-                                    <option value="16">TRIPURA</option>
-                                    <option value="9">UTTAR PRADESH</option>
-                                    <option value="5">UTTARAKHAND</option>
-                                    <option value="19">WEST BENGAL</option>
+                                    <option value="ANDAMAN and NICOBAR ISLANDS">ANDAMAN and NICOBAR ISLANDS</option>
+                                    <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
+                                    <option value="ARUNACHAL PRADESH">ARUNACHAL PRADESH</option>
+                                    <option value="ASSAM">ASSAM</option>
+                                    <option value="BIHAR">BIHAR</option>
+                                    <option value="CHANDIGARH">CHANDIGARH</option>
+                                    <option value="CHHATTISGARH">CHHATTISGARH</option>
+                                    <option value="GOA">GOA</option>
+                                    <option value="GUJARAT">GUJARAT</option>
+                                    <option value="HARYANA">HARYANA</option>
+                                    <option value="HIMACHAL PRADESH">HIMACHAL PRADESH</option>
+                                    <option value="JAMMU and KASHMIR">JAMMU and KASHMIR</option>
+                                    <option value="JHARKHAND">JHARKHAND</option>
+                                    <option value="KARNATAKA">KARNATAKA</option>
+                                    <option value="KERALA">KERALA</option>
+                                    <option value="LADAKH">LADAKH</option>
+                                    <option value="LAKSHADWEEP">LAKSHADWEEP</option>
+                                    <option value="MADHYA PRADESH">MADHYA PRADESH</option>
+                                    <option value="MAHARASHTRA">MAHARASHTRA</option>
+                                    <option value="MANIPUR">MANIPUR</option>
+                                    <option value="MEGHALAYA">MEGHALAYA</option>
+                                    <option value="MIZORAM">MIZORAM</option>
+                                    <option value="NAGALAND">NAGALAND</option>
+                                    <option value="NCT OF DELHI">NCT OF DELHI</option>
+                                    <option value="ORISSA">ORISSA</option>
+                                    <option value="PUDUCHERRY">PUDUCHERRY</option>
+                                    <option value="PUNJAB">PUNJAB</option>
+                                    <option value="RAJASTHAN">RAJASTHAN</option>
+                                    <option value="SIKKIM">SIKKIM</option>
+                                    <option value="TAMIL NADU">TAMIL NADU</option>
+                                    <option value="TELANGANA">TELANGANA</option>
+                                    <option value="THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU">THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU</option>
+                                    <option value="TRIPURA">TRIPURA</option>
+                                    <option value="UTTAR PRADESH">UTTAR PRADESH</option>
+                                    <option value="UTTARAKHAND">UTTARAKHAND</option>
+                                    <option value="WEST BENGAL">WEST BENGAL</option>
                                     </select>
                               </div>
                               <br>
@@ -596,10 +596,10 @@
                                 <label for="category" class="formbold-form-label"> Select Category of Customer </label>
                                   <select name="category" id="category">
                                     <option value="0">Select Category</option>
-                                    <option value="res">Residential (Private)</option>
-                                    <option value="res">Residential (Society)</option>
-                                    <option value="com">Commercial</option>
-                                    <option value="others">Others</option>
+                                    <option value="Residential (Private)">Residential (Private)</option>
+                                    <option value="Residential (Society)">Residential (Society)</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Others">Others</option>
                                   </select>
                               </div>
                               <br>

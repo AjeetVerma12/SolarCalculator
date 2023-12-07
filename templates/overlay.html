@@ -81,18 +81,18 @@
   <div class="overlay-content">
     <span class="close-button" id="closeOverlayBtn">&times;</span>
     <h2>Solar Rooftop Calculator</h2>
-    <p>Average Global Horizontal Irradiation (GHI) in {{state}} state is {{area}} W/sq.m</p>
+    <p>Average Global Horizontal Irradiation (GHI) in {{state}} state is {{rad}} W/sq.m</p>
     <p>1kWp solar rooftop plant will generate on an average over the year {{electricity}} kWh of electricity per day (considering 5.5 sunshine hours)</p>
     <ul class="info-list">
       <li>1. Size of Power Plant: 
         <ul> 
-          <li>Feasible Plant size as per your Roof Top Area : {{roofarea}} </li>
+          <li>Feasible Plant size : {{cap}} kW</li>
         </ul>
       </li>
       <li>2. Cost of the Plant:
         <ul>
-          <li>MNRE current Benchmark Cost (without GST): Rs. {{costw/ogst}} Rs./kW</li>
-          <li>Without subsidy (without GST): Rs. {{w/osubsidy}}</li>
+          <li>MNRE current Benchmark Cost (without GST): Rs. {{cost_gst}} Rs./kW</li>
+          <li>Without subsidy (without GST): Rs. {{wosubsidy}}</li>
           <li>With subsidy (): Rs. {{wsubsidy}}</li>
         </ul>
       </li>
@@ -113,7 +113,7 @@
         </ul>
       </li>
       <li>
-        Break Even Time: {{break}} Years
+        Break Even Time: {{break_even}} Years
       </li>
     </ul>
   </div>

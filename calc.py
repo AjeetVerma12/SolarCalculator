@@ -18,7 +18,7 @@ for state in states_list1:
 for state in states_list2:
     detail[state] = list2
 
-irrad = {"ARUNACHAL PRADESH": 1046.26, "Assam": 1046.26, "HIMACHAL PRADESH": 1046.26, "JAMMU and KASHMIR": 1046.26,
+irrad = {"ARUNACHAL PRADESH": 1046.26, "ASSAM": 1046.26, "HIMACHAL PRADESH": 1046.26, "JAMMU and KASHMIR": 1046.26,
              "MANIPUR": 1046.26, "MEGHALAYA": 1046.26, "MIZORAM": 1046.26, "NAGALAND": 1046.26, "SIKKIM": 1046.26,
              "TRIPURA": 1046.26, "UTTARAKHAND": 1046.26, "ANDAMAN and NICOBAR ISLANDS": 1156.39, "BIHAR": 1156.39,
              "CHANDIGARH": 1156.39, "HARYANA": 1156.39, "JHARKHAND": 1156.39, "NCT OF DELHI": 1156.39, "ORISSA": 1156.39,
@@ -100,28 +100,32 @@ def calc_from_capacity(state, capacity, category, rate):
         cost = temp[5] * cap
     ans.append(float(cost))
     subsidy = 0
-    if category == "Private":  # Send Residential(Private)
+    if category == "Residential (Private)":  # Send Residential(Private)
         if cap <= 3:
             subsidy = temp[6] * cap
         elif 3 < cap <= 10:
             subsidy = temp[6] * 3 + (temp[7] * (cap - 3))
         else:
             subsidy = temp[8]
-    net_cost = cost - float(subsidy)
+
+    if category == "Residential (Society)" :
+        subsidy = 7294 * cap
+    
+    net_cost = round(cost - subsidy, 2)
     ans.append(net_cost)
     annual_elec = cap * prod * 300
     ans.append(annual_elec)
     total_elec = annual_elec * 25
     ans.append(total_elec)
 
-    month_save = (annual_elec / 12) * rate
-    annual_save = annual_elec * rate
-    overall_save = annual_save * 25
+    month_save = round((annual_elec / 12) * rate)
+    annual_save = round(annual_elec * rate)
+    overall_save = round(annual_save * 25)
     ans.append(month_save)
     ans.append(annual_save)
     ans.append(overall_save)
 
-    break_even = net_cost / annual_save
+    break_even = round(net_cost / annual_save,2)
     ans.append(break_even)
     return ans
 
