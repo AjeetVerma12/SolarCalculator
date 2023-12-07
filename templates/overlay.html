@@ -50,14 +50,14 @@
 
   .info-list li {
     background: #f2f2f2;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     padding: 10px;
     font-weight: bold;
   }
 
   .info-list ul {
     list-style-type: none;
-    padding-left: 20px;
+    padding-left: 30px;
   }
 
   .info-list ul li {
@@ -81,16 +81,39 @@
   <div class="overlay-content">
     <span class="close-button" id="closeOverlayBtn">&times;</span>
     <h2>Solar Rooftop Calculator</h2>
-    <p>Average Global Horizontal Irradiation (GHI) in {{state}} state is 1964 W/sq.m</p>
-    <p>1kWp solar rooftop plant will generate on an average over the year 4.42 kWh of electricity per day (considering 5.5 sunshine hours)</p>
+    <p>Average Global Horizontal Irradiation (GHI) in {{state}} state is {{area}} W/sq.m</p>
+    <p>1kWp solar rooftop plant will generate on an average over the year {{electricity}} kWh of electricity per day (considering 5.5 sunshine hours)</p>
     <ul class="info-list">
-      <li>1. Size of Power Plant: Feasible Plant size as per your Roof Top Area : 205.3 kW</li>
+      <li>1. Size of Power Plant: 
+        <ul> 
+          <li>Feasible Plant size as per your Roof Top Area : {{roofarea}} </li>
+        </ul>
+      </li>
       <li>2. Cost of the Plant:
         <ul>
-          <li>MNRE current Benchmark Cost: Rs. 53000 Rs./kW</li>
-          <li>Without subsidy (Based on current MNRE benchmark): Rs. 10880900</li>
-          <li>With subsidy 30% (Based on current MNRE benchmark): Rs. 7616630</li>
+          <li>MNRE current Benchmark Cost (without GST): Rs. {{costw/ogst}} Rs./kW</li>
+          <li>Without subsidy (without GST): Rs. {{w/osubsidy}}</li>
+          <li>With subsidy (): Rs. {{wsubsidy}}</li>
         </ul>
+      </li>
+      <li>
+        Total Electricity Generation From Solar Plant:
+        <ul>
+          <li>Annual: {{annual}}</li>
+          <li>Life-Time (25 Years): {{life}}</li>
+        </ul>
+      </li>
+      <li>
+        Financial Savings:
+        Tarrif @{{cost}} kWh
+        <ul>
+          <li>Monthly: {{month}}</li>
+          <li>Annually: {{annualcost}}</li>
+          <li>Life-Time(25 years): {{lifecost}}</li>
+        </ul>
+      </li>
+      <li>
+        Break Even Time: {{break}} Years
       </li>
     </ul>
   </div>
