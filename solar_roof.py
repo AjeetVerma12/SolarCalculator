@@ -234,7 +234,8 @@ def output():
     # Edge Sharpened Image
     sharp_image = sharp(grayscale)
     # Canny Edge
-    edged = cv2.Canny(sharp_image, 200, 300)
+    global edged
+    edged =cv2.Canny(sharp_image, 200, 300)
     edge_image = sharp_image
     # Contours in Canny Edge Image
     contours_canny(cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[-2])
@@ -250,7 +251,7 @@ def output():
     solar_panels_area= area_in_pixels * pixel_resolution**2
 
     # Print the size of the solar roof in mm^2
-    print('size of solar roof in mm^2 : ', solar_panels_area)
+    return solar_panels_area
 
     # ret, thresh2 = cv2.threshold(edge_image, 198, 255, cv2.THRESH_BINARY)
 
@@ -258,3 +259,4 @@ def output():
     # area_roof = total_roof_area*0.075
 
     # print('area of building roof: ',total_roof_area*0.075,'sqm')
+
