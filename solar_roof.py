@@ -203,39 +203,43 @@ def panel_rotation(panels_series, solar_roof_area):
 
     area_of_panels = no_blue_pixels*0.075
 
-if __name__ == "__main__":
-    images = glob.glob('2.jpeg')
+def output(fname):
+    # images = glob.glob('2.jpeg')
+    
 
-    for fname in images:
-    	# pl = No of panels together as length commonside, pw = Same as for pw here w = width
-    	# l = Length of panel in mm, w = Width of panel in mm
-    	# solar_angle = Angle for rotation
-        pl, pw, l, w, solar_angle = 1, 1, 2, 2, 30
-        image = cv2.imread(fname)
-        img = cv2.pyrDown(image)
-        #print('image shape : ',img.shape)
-        n_white_pix = np.sum(img==255)
-        # Upscaling of Image
-        high_reso_orig = cv2.pyrUp(image)
+    # for fname in images:
+    # pl = No of panels together as length commonside, pw = Same as for pw here w = width
+    # l = Length of panel in mm, w = Width of panel in mm
+    # solar_angle = Angle for rotation
+    global pl, pw, l, w, solar_angle
+    pl, pw, l, w, solar_angle = 1, 1, 2, 2, 30
+    image = cv2.imread(fname)
+    img = cv2.pyrDown(image)
+    #print('image shape : ',img.shape)
+    global n_white_pix
+    n_white_pix = np.sum(img==255)
+    # Upscaling of Image
+    global high_reso_orig
+    high_reso_orig = cv2.pyrUp(image)
 
-        # White blank image for contours of Canny Edge Image
-        canny_contours = white_image(image)
-        # White blank image for contours of original image
-        image_contours = white_image(image)
+    # White blank image for contours of Canny Edge Image
+    global canny_contours
+    canny_contours = white_image(image)
+    # White blank image for contours of original image
+    global image_contours,image_polygons,canny_polygons
+    image_contours = white_image(image)
 
-        # White blank images removing rooftop's obstruction
-        image_polygons = grays(canny_contours)
-        canny_polygons = grays(canny_contours)
+    # White blank images removing rooftop's obstruction
+    image_polygons = grays(canny_contours)
+    canny_polygons = grays(canny_contours)
 
-# Gray Image
-
-def output():
+    # Gray Image
+    global grayscale,sharp_image,edged,solar_roof,pixel_width,pixel_height
     grayscale = grays(image)
     # Edge Sharpened Image
     sharp_image = sharp(grayscale)
     # Canny Edge
-    global edged
-    edged =cv2.Canny(sharp_image, 200, 300)
+    edged = cv2.Canny(sharp_image, 200, 300)
     edge_image = sharp_image
     # Contours in Canny Edge Image
     contours_canny(cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[-2])
@@ -253,10 +257,5 @@ def output():
     # Print the size of the solar roof in mm^2
     return solar_panels_area
 
-    # ret, thresh2 = cv2.threshold(edge_image, 198, 255, cv2.THRESH_BINARY)
-
-    # total_roof_area = np.sum(thresh2==255)
-    # area_roof = total_roof_area*0.075
-
-    # print('area of building roof: ',total_roof_area*0.075,'sqm')
+# output("2.jpeg")
 

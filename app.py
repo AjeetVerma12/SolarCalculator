@@ -3,8 +3,12 @@ import calc
 from calc import calc_from_area, calc_from_budget, calc_from_capacity
 import solar_roof
 from solar_roof import output
+import os
 
 app = Flask(__name__)
+
+UPLOAD_FOLDER = 'C:\\Users\\Mahi Singhal\\OneDrive\\Desktop\\college work\\Renewable\\SolarCalculator\\'  # Set the desired folder to save the uploaded images
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @app.route('/')
@@ -16,23 +20,28 @@ def overlay():
     if request.method == 'POST':
         option = request.form.get('option')  # Assuming 'option' is a form field
         roof = request.files['rooffile']
-        panel = int(request.form.get('solarpanel'))
-        budget = int(request.form.get('budget'))
+        panel_str = request.form.get('solarpanel','')
+        panel = int(panel_str) if panel_str else 0
+        budget_str = request.form.get('budget', '')
+        budget = int(budget_str) if budget_str else 0
         state = request.form.get('state')
         category = request.form.get('category')
         cost = int(request.form.get('cost'))
 
-        print(state)
+        fname= roof.filename
 
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], fname)
+        roof.save(file_path)
+        # print(state)
         ans = []
         roofarea = 0
 
         if roof:
-            roofarea = output(roof)
+            roofarea = output(fname)
             ans = calc_from_area(state, roofarea, category, cost)
-        elif panel:
+        elif panel !=0:
             ans = calc_from_capacity(state, panel, category, cost)
-        elif budget:
+        elif budget !=0:
             ans = calc_from_budget(state, budget, category, cost)
 
         return render_template('overlay.html', state=state, rad=ans[0], electricity=ans[1], cap=ans[2],
