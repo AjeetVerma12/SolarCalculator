@@ -253,9 +253,16 @@ def output(fname):
     # Convert the pixel size to mm^2
     pixel_resolution = 0.1
     solar_panels_area= area_in_pixels * pixel_resolution**2
+    ret, thresh2 = cv2.threshold(edge_image, 198, 255, cv2.THRESH_BINARY)
+
+    total_roof_area = np.sum(thresh2==255)
+    area_roof = total_roof_area*0.075
+
+    print('area of building roof: ',total_roof_area*0.075,'sqm')
+    print('area of solar roof: ', solar_panels_area, 'sqm')
 
     # Print the size of the solar roof in mm^2
     return solar_panels_area
 
-# output("2.jpeg")
+# print(output("2.jpeg"))
 
