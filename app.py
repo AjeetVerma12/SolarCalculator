@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'C:\\Users\\Mahi Singhal\\OneDrive\\Desktop\\college work\\Renewable\\SolarCalculator\\'  # Set the desired folder to save the uploaded images
+UPLOAD_FOLDER = 'C:\\Users\\Mahi Singhal\\OneDrive\\Desktop\\college work\\Renewable\\SolarCalculator'  # Set the desired folder to save the uploaded images
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -28,15 +28,15 @@ def overlay():
         category = request.form.get('category')
         cost = int(request.form.get('cost'))
 
-        fname= roof.filename
 
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], fname)
-        roof.save(file_path)
         # print(state)
         ans = []
         roofarea = 0
 
         if roof:
+            fname= roof.filename
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], fname)
+            roof.save(file_path)
             roofarea = output(fname)
             ans = calc_from_area(state, roofarea, category, cost)
         elif panel !=0:
